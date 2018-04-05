@@ -1,0 +1,14 @@
+1#!/bin/bash
+
+if [ -z "$1" ] then
+	echo "Expected arguments, please check the help : initdev –help";
+	exit 1;
+
+else
+	mkdir $1;
+	cd $1;
+	touch main;
+	touch LICENSE;
+	touch makfile;
+	exit 0;
+fi

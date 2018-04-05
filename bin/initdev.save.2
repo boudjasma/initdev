@@ -1,0 +1,18 @@
+#!/bin/bash
+
+if [ -z "$1" ] 
+then
+	echo "Expected arguments, please check the help : initdev –help"
+	exit "1"
+
+elif [$1 = "-help"]
+then 
+	e0cho "— Name : Afficher le nom de l’application et une petite description.\n— Syntax : Afficher la syntaxe d’utilisation de la commande initdev.\n— args : Lister les arguments et donner une description de chaque argument.\n— author : Afficher le nom et l’email de l’auteur de l’application.";
+else
+	mkdir $1
+	cd $1
+	touch main
+	touch LICENSE
+	touch makfile
+	exit "0"
+fi

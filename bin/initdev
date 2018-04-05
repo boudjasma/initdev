@@ -1,0 +1,49 @@
+#!/bin/bash
+
+if [ -z "$1" ]
+then
+	echo "Expected arguments, please check the help : initdev –help"
+	exit "1"
+
+elif [ $1 == '-help' ]
+then
+	echo "— Name : Afficher le nom de l’application et une petite description."
+        echo "— Syntax : Afficher la syntaxe d’utilisation de la commande initdev."
+	echo "— args : Lister les arguments et donner une description de chaque argument."
+	echo "— author : Afficher le nom et l’email de l’auteur de l’application."
+	exit "1"
+else
+	mkdir $1
+	cd $1
+	touch LICENSE
+        touch makfile
+	if [ ! -z "$2" ]
+	then
+		if [ $2 == '-c' ]
+		then
+			touch main.c
+		elif [ $2 == '-py' ]
+		then
+			touch main.py
+		elif [ $2 == 'cpp' ]
+		then
+			touch main.cpp
+		else
+			echo "Expected arguments";
+			exit "1"
+		fi
+		if [ ! -z "$3" ]
+		then
+			if [ $3 == '-git' ]
+			then
+				touch .gitignore
+			fi
+		else
+			echo "You must set project type, please check the help : initdev –help";
+			exit "1"
+		fi
+	else
+		touch main
+	fi
+	exit "0"
+fi
